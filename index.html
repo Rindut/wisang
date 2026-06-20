@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coach Wisang, Pelatih Pencak Silat</title>
+<meta name="description" content="Coach Wisang, pelatih pencak silat berpengalaman dan pembina atlet berprestasi. Kelas silat untuk anak, dewasa, dan grup, dengan metode menyenangkan, aman, dan sesuai kebutuhan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Palet diambil dari pelatih.jpg: bandana terakota, kaos silat charcoal hangat, dinding & cahaya hangat */
+    --ink:#231c17;          /* teks near-black hangat */
+    --ink-soft:#6e6258;     /* taupe untuk teks sekunder */
+    --gold:#d2562e;         /* aksen terakota (bandana) */
+    --gold-deep:#a83c1c;    /* terakota gelap untuk hover/teks */
+    --clay:#e8a06b;         /* terakota terang untuk aksen di latar gelap */
+    --navy:#2b231e;         /* charcoal hangat (kaos) */
+    --navy-deep:#181210;    /* near-black hangat */
+    --paper:#fdfbf7;        /* putih hangat */
+    --mist:#f5eee5;         /* krem (surface terang) */
+    --line:#e9ded1;         /* border hangat */
+    --green:#2f9c5e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  /* cegah grid/flex item memaksa lebar lebih dari layar */
+  .hero .wrap>*,.profile .wrap>*,.value,.prog,.ach-card,.vid,.stat{min-width:0}
+  h1,h2,h3{font-family:"Oswald",sans-serif;line-height:1.12;letter-spacing:.01em;text-transform:uppercase}
+  h1{font-weight:700}h2,h3{font-weight:600}
+
+  .topbar{background:var(--navy-deep);color:#fff;font-size:.82rem;text-align:center;padding:9px 16px;letter-spacing:.04em}
+  .topbar b{color:var(--gold)}
+
+  /* ---- Hero ---- */
+  .hero{
+    background:
+      linear-gradient(155deg, rgba(24,18,16,.96), rgba(43,35,30,.90)),
+      radial-gradient(circle at 82% 18%, rgba(210,86,46,.30), transparent 52%),
+      radial-gradient(circle at 10% 90%, rgba(232,160,107,.12), transparent 45%);
+    color:#fff;padding:76px 0 68px;
+  }
+  .hero .wrap{display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:center}
+  .eyebrow{
+    display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--clay);border:1px solid rgba(232,160,107,.45);padding:6px 14px;border-radius:999px;margin-bottom:22px;
+  }
+  .hero h1{font-size:3.2rem;font-weight:700;margin-bottom:18px;letter-spacing:.01em}
+  .hero h1 .nm{color:var(--clay)}
+  .hero p.lead{font-size:1.12rem;color:#e8ddd0;max-width:48ch;margin-bottom:30px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:1rem;text-decoration:none;
+    padding:14px 26px;border-radius:10px;transition:transform .15s ease,box-shadow .15s ease}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--gold);color:#fff;box-shadow:0 8px 22px rgba(210,86,46,.32)}
+  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45)}
+
+  .hero-photo{position:relative}
+  .hero-photo img{
+    width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:18px;display:block;
+    border:1px solid rgba(255,255,255,.18);box-shadow:0 18px 44px rgba(0,0,0,.35);
+  }
+  .hero-photo .ph-fallback{
+    width:100%;aspect-ratio:1/1;border-radius:18px;display:none;flex-direction:column;align-items:center;justify-content:center;
+    background:linear-gradient(150deg,var(--navy),var(--navy-deep));border:1px solid rgba(255,255,255,.18);
+  }
+  .hero-photo .ph-fallback .emblem{font-size:3.6rem;margin-bottom:12px}
+  .hero-photo .ph-fallback .ph{font-size:.78rem;letter-spacing:.1em;color:rgba(255,255,255,.5);text-transform:uppercase;text-align:center;padding:0 20px}
+  .badge-float{
+    position:absolute;left:-14px;bottom:18px;background:var(--gold);color:#fff;
+    font-weight:800;font-size:.92rem;padding:10px 16px;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,.3);
+  }
+
+  section{padding:64px 0}
+  .section-head{text-align:center;max-width:62ch;margin:0 auto 44px}
+  .section-head h2{font-size:2.1rem;font-weight:600;margin-bottom:12px}
+  .section-head p{color:var(--ink-soft);font-size:1.05rem}
+
+  /* ---- Profile ---- */
+  .profile .wrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+  .profile h2{font-size:1.9rem;font-weight:800;margin-bottom:16px}
+  .profile p{color:var(--ink-soft);margin-bottom:14px}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}
+  .stat{background:var(--mist);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center}
+  .stat .n{font-size:1.7rem;font-weight:800;color:var(--gold-deep)}
+  .stat .l{font-size:.8rem;color:var(--ink-soft);margin-top:2px}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+  .chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 15px;font-size:.88rem;font-weight:600;color:var(--navy)}
+  .profile-aside{background:var(--mist);border:1px solid var(--line);border-radius:16px;padding:28px}
+  .profile-aside h3{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:16px}
+  .exp{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .exp:last-child{border-bottom:none;padding-bottom:0}
+  .exp .dot{flex:0 0 10px;height:10px;border-radius:50%;background:var(--gold);margin-top:7px}
+  .exp b{display:block;font-size:.98rem}
+  .exp span{font-size:.86rem;color:var(--ink-soft)}
+
+  /* ---- Values ---- */
+  .values{background:var(--mist)}
+  .value-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+  .value{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 22px;text-align:center}
+  .value .ic{width:52px;height:52px;border-radius:12px;margin:0 auto 16px;
+    background:var(--paper);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+  .value h3{font-size:1.1rem;margin-bottom:7px}
+  .value p{color:var(--ink-soft);font-size:.92rem}
+
+  /* ---- Achievements ---- */
+  .ach{background:var(--navy-deep);color:#fff}
+  .ach .section-head h2{color:#fff}
+  .ach .section-head p{color:#c4b3a4}
+  .medal-bar{display:flex;justify-content:center;gap:34px;flex-wrap:wrap;margin-bottom:46px}
+  .medal{text-align:center}
+  .medal .num{font-size:2.6rem;font-weight:800;line-height:1}
+  .medal .lbl{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:#c4b3a4;margin-top:6px}
+  .gold .num{color:#ffd76b}.silver .num{color:#d6dde6}.bronze .num{color:#e0a374}
+  .year-block{margin-bottom:30px}
+  .year-block > h3{font-size:1.2rem;color:var(--clay);letter-spacing:.08em;border-bottom:1px solid rgba(255,255,255,.16);padding-bottom:10px;margin-bottom:18px}
+  .ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+  .ach-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:18px 18px 16px}
+  .ach-card .title{font-weight:700;font-size:.98rem;margin-bottom:4px}
+  .ach-card .sub{font-size:.84rem;color:#b7a596;margin-bottom:12px}
+  .ach-card .haul{display:flex;gap:14px;font-size:.85rem;font-weight:700}
+  .ach-card .haul .g{color:#ffd76b}.ach-card .haul .s{color:#d6dde6}.ach-card .haul .b{color:#e0a374}
+
+  /* ---- Programs ---- */
+  .programs .prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+  .prog{border:1px solid var(--line);border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;position:relative;background:#fff}
+  .prog.feature{border:2px solid var(--gold);box-shadow:0 14px 34px rgba(210,86,46,.16)}
+  .prog .ribbon{position:absolute;top:-12px;left:24px;background:var(--gold);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+  .prog .soon{position:absolute;top:-12px;left:24px;background:#dde3ea;color:var(--ink-soft);font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+  .prog .ic{font-size:2rem;margin-bottom:12px}
+  .prog h3{font-size:1.25rem;margin-bottom:6px}
+  .prog .desc{color:var(--ink-soft);font-size:.92rem;margin-bottom:16px;flex:0 0 auto}
+  .prog ul{list-style:none;margin:0 0 20px;font-size:.9rem}
+  .prog li{padding:6px 0;display:flex;gap:9px;color:var(--ink)}
+  .prog li .t{color:var(--green);font-weight:800}
+  .prog .price{margin-top:auto;font-size:1.5rem;font-weight:800;color:var(--navy);margin-bottom:16px}
+  .prog .price small{font-size:.85rem;font-weight:500;color:var(--ink-soft)}
+  .prog .price.tba{font-size:1.1rem;color:var(--ink-soft)}
+  .prog .btn-sm{display:inline-flex;justify-content:center;align-items:center;gap:8px;font-weight:700;text-decoration:none;padding:12px 18px;border-radius:9px;font-size:.95rem}
+  .prog .btn-sm.go{background:var(--gold);color:#fff}
+  .prog .btn-sm.wait{background:var(--mist);color:var(--ink-soft);border:1px solid var(--line)}
+
+  /* ---- Videos ---- */
+  .videos{background:var(--mist)}
+  .vid-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+  .vid{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;display:block;transition:transform .15s ease,box-shadow .15s ease}
+  .vid:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(40,28,20,.14)}
+  .vid .thumb{position:relative;aspect-ratio:16/9;background:linear-gradient(150deg,var(--navy),var(--navy-deep));overflow:hidden}
+  .vid .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .vid .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;background:rgba(220,30,30,.92);border:2px solid #fff;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.25rem;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+  .vid:hover .play{background:#cc0000}
+  .vid .meta{padding:16px 18px}
+  .vid .meta b{display:block;font-size:1rem;margin-bottom:3px}
+  .vid .meta span{font-size:.85rem;color:var(--ink-soft)}
+
+  /* ---- Contact ---- */
+  .contact{background:linear-gradient(160deg,var(--navy),var(--navy-deep));color:#fff;text-align:center}
+  .contact-card{max-width:520px;margin:0 auto;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:38px 34px}
+  .contact-card h2{font-size:1.8rem;font-weight:800;margin-bottom:12px}
+  .contact-card p{color:#d9cabc;margin-bottom:26px}
+  .note{font-size:.85rem;color:#c4b3a4;margin-top:18px}
+
+  footer{background:var(--navy-deep);color:#9c8c7e;text-align:center;padding:30px 0;border-top:1px solid rgba(255,255,255,.08)}
+  footer p{color:#9c8c7e;font-size:.85rem}
+  footer .salam{color:var(--gold);font-size:.95rem;margin-bottom:6px}
+  footer .credit{color:#6f6358;font-size:.76rem;margin-top:10px;letter-spacing:.02em}
+  footer .credit a{color:var(--clay);text-decoration:none;font-weight:600}
+  footer .credit a:hover{text-decoration:underline}
+
+  @media(max-width:860px){
+    .hero .wrap,.profile .wrap{grid-template-columns:1fr;gap:32px}
+    .hero-photo{max-width:340px;margin:0 auto;order:-1}
+    .hero h1{font-size:2.4rem}
+    .medal-bar{gap:22px}
+  }
+  @media(max-width:640px){
+    section{padding:46px 0}
+    .wrap{padding:0 18px}
+    .hero{padding:48px 0 44px}
+    .hero h1{font-size:2.05rem}
+    .hero p.lead{font-size:1.02rem;max-width:100%}
+    .eyebrow{white-space:normal;letter-spacing:.1em;font-size:.72rem;line-height:1.5;margin-top:26px}
+    .badge-float{font-size:.82rem;line-height:1.3}
+    .topbar{font-size:.74rem;letter-spacing:.02em;line-height:1.35}
+    .section-head{margin-bottom:32px}
+    .section-head h2{font-size:1.7rem}
+    .section-head p{font-size:.98rem}
+    .cta-row{flex-direction:column;align-items:stretch}
+    .cta-row .btn{width:100%;justify-content:center}
+    .badge-float{left:50%;transform:translateX(-50%);bottom:-14px;font-size:.85rem}
+    .medal-bar{gap:18px 28px}
+    .medal .num{font-size:2.2rem}
+    .profile-aside{padding:22px}
+    .contact-card{padding:30px 22px}
+    .contact-card h2{font-size:1.55rem}
+  }
+  @media(max-width:380px){
+    .hero h1{font-size:1.85rem}
+    .stats{gap:10px}
+    .stat{padding:13px 8px}
+    .stat .n{font-size:1.45rem}
+    .chip{font-size:.82rem;padding:6px 12px}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">🥋 Kelas Bela Diri bersama <b>Coach Wisang</b></div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Pelatih Pencak Silat &middot; Pembina Atlet</span>
+      <h1>Belajar beladiri langsung dari<br><span class="nm">Coach Wisang</span></h1>
+      <p class="lead">Pelatih berpengalaman yang membina atlet hingga meraih puluhan medali di kejuaraan nasional. Metode latihan dibuat menyenangkan, aman, dan disesuaikan untuk setiap usia.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://wa.me/628118600086?text=Halo%20Coach%20Wisang,%20saya%20mau%20tanya%20program%20latihan%20silat" target="_blank" rel="noopener">Contact Coach Wisang &rarr;</a>
+        <a class="btn btn-ghost" href="#prestasi">Rekam Jejak</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="pelatih.jpg" alt="Coach Wisang"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="ph-fallback">
+        <div class="emblem">🥋</div>
+        <div class="ph">[ Simpan foto sebagai pelatih.jpg ]</div>
+      </div>
+      <div class="badge-float">Track record:<br>93 medali &amp; terus bertambah</div>
+    </div>
+  </div>
+</header>
+
+<!-- PROFILE -->
+<section class="profile">
+  <div class="wrap">
+    <div>
+      <h2>Tentang Coach Wisang</h2>
+      <p>Wisang adalah pelatih pencak silat yang berpengalaman melatih dan membina atlet hingga berprestasi di berbagai kejuaraan, mulai dari tingkat daerah sampai nasional.</p>
+      <p>Selama beberapa tahun ia melatih ekskul silat di <b>SD Tarakanita Puloraya</b> dan <b>Patal Senayan</b>, mendampingi anak-anak dari level pemula hingga menjadi atlet juara.</p>
+      <div class="stats">
+        <div class="stat"><div class="n">10+</div><div class="l">Tahun melatih</div></div>
+        <div class="stat"><div class="n">9</div><div class="l">Kejuaraan dibina</div></div>
+        <div class="stat"><div class="n">93</div><div class="l">Total medali</div></div>
+      </div>
+      <div class="chips">
+        <span class="chip">Pelatih Silat Perisai Diri</span>
+        <span class="chip">Pembina Atlet</span>
+        <span class="chip">Pelatih Ekskul Silat</span>
+      </div>
+    </div>
+    <div class="profile-aside">
+      <h3>Pengalaman Melatih</h3>
+      <div class="exp"><div class="dot"></div><div><b>SD Tarakanita Puloraya</b><span>Pelatih ekskul pencak silat</span></div></div>
+      <div class="exp"><div class="dot"></div><div><b>Patal Senayan</b><span>Pelatih pencak silat</span></div></div>
+      <div class="exp"><div class="dot"></div><div><b>Perisai Diri (Tarakanita &amp; Bayuadji)</b><span>Pembinaan atlet kejuaraan</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Lebih dari sekadar beladiri</h2>
+      <p>Latihan bersama Coach Wisang membentuk karakter, bukan cuma gerakan.</p>
+    </div>
+    <div class="value-grid">
+      <div class="value"><div class="ic">🎯</div><h3>Disiplin</h3><p>Rutinitas dan aturan latihan melatih konsistensi.</p></div>
+      <div class="value"><div class="ic">💪</div><h3>Percaya Diri</h3><p>Setiap kemajuan kecil membangun keberanian.</p></div>
+      <div class="value"><div class="ic">🧠</div><h3>Fokus</h3><p>Latihan terstruktur melatih konsentrasi dan ketenangan.</p></div>
+      <div class="value"><div class="ic">🤝</div><h3>Mental Sportif</h3><p>Berani, tangguh, dan menghormati lawan maupun kawan.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="ach" id="prestasi">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Rekam jejak yang berbicara</h2>
+      <p>Total medali yang diraih atlet binaan Coach Wisang sepanjang 2023&ndash;2025.</p>
+    </div>
+    <div class="medal-bar">
+      <div class="medal gold"><div class="num">37</div><div class="lbl">Emas</div></div>
+      <div class="medal silver"><div class="num">35</div><div class="lbl">Perak</div></div>
+      <div class="medal bronze"><div class="num">21</div><div class="lbl">Perunggu</div></div>
+    </div>
+
+    <div class="year-block">
+      <h3>2025</h3>
+      <div class="ach-grid">
+        <div class="ach-card">
+          <div class="title">Piala Pengprov IPSI DKI Jakarta</div>
+          <div class="sub">Kelas Pra-Remaja &middot; Perisai Diri Bayuadji</div>
+          <div class="haul"><span class="g">1 Emas</span><span class="s">1 Perak</span><span class="b">4 Perunggu</span></div>
+        </div>
+        <div class="ach-card">
+          <div class="title">Piala Menpora RI 4</div>
+          <div class="sub">Usia Dini 2 &amp; Pra-Remaja &middot; Perisai Diri Bayuadji</div>
+          <div class="haul"><span class="g">1 Emas</span><span class="s">2 Perak</span><span class="b">3 Perunggu</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="year-block">
+      <h3>2024</h3>
+      <div class="ach-grid">
+        <div class="ach-card">
+          <div class="title">Walikota Jakarta Selatan Cup 3</div>
+          <div class="sub">Perisai Diri Tarakanita</div>
+          <div class="haul"><span class="g">6 Emas</span><span class="s">11 Perak</span><span class="b">2 Perunggu</span></div>
+        </div>
+        <div class="ach-card">
+          <div class="title">Walikota Jaksel Cup 3 (Official)</div>
+          <div class="sub">IPSI Mampang Prapatan</div>
+          <div class="haul"><span class="s">2 Perak</span><span class="b">6 Perunggu</span></div>
+        </div>
+        <div class="ach-card">
+          <div class="title">Kejurnas KONI Cup DKI Jakarta</div>
+          <div class="sub">Perisai Diri Tarakanita</div>
+          <div class="haul"><span class="g">3 Emas</span><span class="s">4 Perak</span></div>
+        </div>
+        <div class="ach-card">
+          <div class="title">Kejurnas Piala Menpora RI 3</div>
+          <div class="sub">Perisai Diri Tarakanita</div>
+          <div class="haul"><span class="g">4 Emas</span><span class="s">5 Perak</span><span class="b">2 Perunggu</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="year-block">
+      <h3>2023</h3>
+      <div class="ach-grid">
+        <div class="ach-card">
+          <div class="title">Walikota Jakarta Selatan Cup 2</div>
+          <div class="sub">Perisai Diri Tarakanita</div>
+          <div class="haul"><span class="g">9 Emas</span><span class="s">2 Perak</span><span class="b">1 Perunggu</span></div>
+        </div>
+        <div class="ach-card">
+          <div class="title">Kejurnas BNN Cup 4</div>
+          <div class="sub">Perisai Diri Tarakanita</div>
+          <div class="haul"><span class="g">6 Emas</span><span class="s">6 Perak</span></div>
+        </div>
+        <div class="ach-card">
+          <div class="title">Indonesia Student Open 2023</div>
+          <div class="sub">Piala PB IPSI &middot; Perisai Diri Tarakanita</div>
+          <div class="haul"><span class="g">8 Emas</span><span class="s">2 Perak</span><span class="b">3 Perunggu</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs" id="program">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Pilihan Program Latihan</h2>
+      <p>Mulai dari kelas anak yang sudah dibuka, hingga kelas dewasa dan grup yang segera hadir. Latihan disesuaikan dengan usia dan kebutuhan peserta.</p>
+    </div>
+    <div class="prog-grid">
+
+      <div class="prog feature">
+        <div class="ribbon">Sudah Dibuka</div>
+        <div class="ic">🧒</div>
+        <h3>Kelas Anak</h3>
+        <div class="desc">Beladiri untuk anak di lingkungan Habitat. Disiplin, percaya diri, dan fokus lewat latihan yang seru dan aman.</div>
+        <ul>
+          <li><span class="t">✓</span> 1 sesi / minggu (1&ndash;2 jam)</li>
+          <li><span class="t">✓</span> Metode menyenangkan &amp; sesuai usia</li>
+          <li><span class="t">✓</span> Lokasi di lingkungan Habitat</li>
+        </ul>
+        <div class="price">Rp100.000<small> /anak/bulan</small></div>
+        <a class="btn-sm go" href="https://wa.me/628118600086?text=Halo%20Coach%20Wisang,%20saya%20tertarik%20dengan%20Kelas%20Anak" target="_blank" rel="noopener">💬 Daftar Sekarang</a>
+      </div>
+
+      <div class="prog">
+        <div class="soon">Segera Hadir</div>
+        <div class="ic">🧘‍♀️</div>
+        <h3>Kelas Ibu-Ibu</h3>
+        <div class="desc">Kelas khusus dewasa wanita: beladiri praktis untuk perlindungan diri sekaligus olahraga dan kebugaran.</div>
+        <ul>
+          <li><span class="t">✓</span> Fokus self-defense praktis</li>
+          <li><span class="t">✓</span> Tempo ramah pemula</li>
+          <li><span class="t">✓</span> Suasana santai &amp; suportif</li>
+        </ul>
+        <div class="price tba">Info menyusul</div>
+        <a class="btn-sm wait" href="https://wa.me/628118600086?text=Halo%20Coach%20Wisang,%20saya%20mau%20info%20Kelas%20Ibu-Ibu" target="_blank" rel="noopener">Daftar Tunggu</a>
+      </div>
+
+      <div class="prog">
+        <div class="soon">Segera Hadir</div>
+        <div class="ic">🥊</div>
+        <h3>Kelas Dewasa / Grup</h3>
+        <div class="desc">Untuk bapak-bapak, keluarga, atau grup komunitas. Bisa diatur jadwal dan format sesuai kebutuhan.</div>
+        <ul>
+          <li><span class="t">✓</span> Kelas dewasa &amp; grup privat</li>
+          <li><span class="t">✓</span> Jadwal fleksibel</li>
+          <li><span class="t">✓</span> Kebugaran + beladiri</li>
+        </ul>
+        <div class="price tba">Info menyusul</div>
+        <a class="btn-sm wait" href="https://wa.me/628118600086?text=Halo%20Coach%20Wisang,%20saya%20mau%20info%20Kelas%20Dewasa/Grup" target="_blank" rel="noopener">Daftar Tunggu</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section class="videos">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Lihat suasana latihan</h2>
+      <p>Beberapa cuplikan Coach Wisang saat melatih, sebagai gambaran metode dan suasana kelas.</p>
+    </div>
+    <div class="vid-grid">
+      <a class="vid" href="https://youtu.be/zFDREzC-tnI" target="_blank" rel="noopener">
+        <div class="thumb">
+          <img src="https://i.ytimg.com/vi/zFDREzC-tnI/hqdefault.jpg" alt="Cuplikan latihan Coach Wisang" loading="lazy"
+               onerror="this.onerror=null;this.src='https://img.youtube.com/vi/zFDREzC-tnI/hqdefault.jpg'">
+          <div class="play">&#9654;</div>
+        </div>
+        <div class="meta"><b>Video Latihan 1</b><span>Cuplikan sesi latihan</span></div>
+      </a>
+      <a class="vid" href="https://youtu.be/fYfsu-I4DcI" target="_blank" rel="noopener">
+        <div class="thumb">
+          <img src="https://i.ytimg.com/vi/fYfsu-I4DcI/hqdefault.jpg" alt="Cuplikan latihan Coach Wisang" loading="lazy"
+               onerror="this.onerror=null;this.src='https://img.youtube.com/vi/fYfsu-I4DcI/hqdefault.jpg'">
+          <div class="play">&#9654;</div>
+        </div>
+        <div class="meta"><b>Video Latihan 2</b><span>Cuplikan sesi latihan</span></div>
+      </a>
+      <a class="vid" href="https://youtu.be/8Z612hU0HqU" target="_blank" rel="noopener">
+        <div class="thumb">
+          <img src="https://i.ytimg.com/vi/8Z612hU0HqU/hqdefault.jpg" alt="Cuplikan latihan Coach Wisang" loading="lazy"
+               onerror="this.onerror=null;this.src='https://img.youtube.com/vi/8Z612hU0HqU/hqdefault.jpg'">
+          <div class="play">&#9654;</div>
+        </div>
+        <div class="meta"><b>Video Latihan 3</b><span>Cuplikan sesi latihan</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="daftar">
+  <div class="wrap">
+    <div class="contact-card">
+      <h2>Tertarik latihan bareng Coach Wisang?</h2>
+      <p>Mau daftarkan anak, ikut kelas dewasa, atau atur kelas grup? Silakan japri langsung biar enak ngobrolnya.</p>
+      <!-- Ganti 628118600086 dengan nomor WhatsApp (format 62xxx) -->
+      <a class="btn btn-primary" href="https://wa.me/628118600086?text=Halo%20Coach%20Wisang,%20saya%20tertarik%20dengan%20kelas%20silat" target="_blank" rel="noopener">💬 Hubungi via WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="credit">by <a href="https://potgenlabs.com" target="_blank" rel="noopener">Potgenlabs</a> 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>
